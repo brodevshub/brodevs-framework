@@ -1,0 +1,40 @@
+---
+const { src, alt, width } = Astro.props;
+---
+
+<img id="go_to_top_link" src={src} alt={alt} style={{ width: width }} />
+
+<style>
+    #go_to_top_link {
+        animation: bounce 0.9s;
+    }
+
+    @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-10px);
+        }
+        60% {
+            transform: translateY(-5px);
+        }
+    }
+</style>
+
+<script>
+    import { handleClick } from "./goToTopLink";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const a = document.querySelector("#go_to_top_link");
+        if (a) {
+            a.addEventListener("click", (e) => {
+                handleClick(e);
+            });
+        }
+    });
+</script>
