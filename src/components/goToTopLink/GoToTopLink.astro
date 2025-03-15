@@ -1,8 +1,14 @@
 ---
-const { src, alt, width } = Astro.props;
+interface GoToTopLinkProps {
+    src: string;
+    alt: string;
+    width: string;
+}
+
+const { src, alt, width } = Astro.props as GoToTopLinkProps;
 ---
 
-<img id="go_to_top_link" src={src} alt={alt} style={{ width: width }} />
+<img id="go_to_top_link" src={src} alt={alt} style={{ width }} />
 
 <style>
     #go_to_top_link {
@@ -26,8 +32,8 @@ const { src, alt, width } = Astro.props;
     }
 </style>
 
-<script>
-    import { handleClick } from "./goToTopLink";
+<script type="module">
+    import { handleClick } from "./script/goToTopLink";
 
     document.addEventListener("DOMContentLoaded", () => {
         const a = document.querySelector("#go_to_top_link");

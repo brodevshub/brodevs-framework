@@ -12,7 +12,10 @@ export default defineConfig({
       '@hooks': '/src/hooks',
       '@pages': '/src/pages',
       '@services': '/src/services',
+      '@icons': '/src/icons',
       '@util': '/src/util',
+      '@lib': '/src/lib',
+      '@config': '/config',
     },
   },
 })

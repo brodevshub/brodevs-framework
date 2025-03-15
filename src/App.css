@@ -1,0 +1,74 @@
+/* CSS RESET 2024 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+*::selection {
+    background-color: transparent;
+}
+
+input,
+button,
+textarea {
+    font: inherit;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+img,
+video,
+svg {
+    height: auto;
+    max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transition: none;
+    }
+}
+
+img {
+    user-drag: none;
+    -webkit-user-drag: none;
+}
+
+@font-face {
+	font-family: 'SF';
+	src: url(src/assets/fonts/SFPRODISPLAYREGULAR.OTF) format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+:root {
+    --ghost: #f8f8ff;
+    --lava: #56585a;
+	--lightGray: #ccc;
+    --light-red: #f39c12;
+    --light-green: #2ecc71;
+    --black: #333333;
+}

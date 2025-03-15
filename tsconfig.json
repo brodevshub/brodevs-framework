@@ -1,0 +1,45 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"jsx": "react-jsx",
+		"strict": false,
+		"moduleResolution": "Node",
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"baseUrl": ".",
+		"paths": {
+			"@assets/*": [
+				"src/assets/*"
+			],
+			"@components/*": [
+				"src/components/*"
+			],
+			"@contexts/*": [
+				"src/contexts/*"
+			],
+			"@hooks/*": [
+				"src/hooks/*"
+			],
+			"@pages/*": [
+				"src/pages/*"
+			],
+			"@services/*": [
+				"src/services/*"
+			],
+			"@icons/*": [
+				"src/icons/*"
+			],
+			"@util/*": [
+				"src/util/*"
+			],
+			"@lib/*": [
+				"src/lib/*"
+			],
+			"@config/*": [
+				"config/*"
+			]
+		}
+	}
+}
