@@ -67,8 +67,9 @@ img {
 :root {
     --ghost: #f8f8ff;
     --lava: #56585a;
-	--lightGray: #ccc;
-    --light-red: #f39c12;
+	--light-gray: #ccc;
+    --light-yellow: #f1c40f;
+    --light-red: #e74c3c;
     --light-green: #2ecc71;
     --black: #333333;
 }

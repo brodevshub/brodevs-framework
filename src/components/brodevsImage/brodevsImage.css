@@ -1,0 +1,87 @@
+.brodevs-image {
+    width: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.brodevs-image--editable::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fade-in 0.5s linear;
+    z-index: 101;
+}
+
+.brodevs-image__img {
+    width: 100%;
+    height: 100%;
+    animation: fade-in 0.5s linear;
+    z-index: 100;
+}
+
+.brodevs-image__input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    display: none;
+    z-index: 103;
+}
+
+.brodevs-image__label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 104;
+}
+
+.brodevs-image__loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brodevs-image__icon {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    fill: var(--ghost);
+    cursor: pointer;
+    transition: all 0.5s;
+    animation: fade-in 0.5s linear;
+    z-index: 102;
+}
+
+.brodevs-image__label:hover ~ .brodevs-image__icon {
+    transform: scale(1.1);
+}
+
+/* MANDATORY
+    .custom-class {
+        width: ;
+        aspect-ratio: ;
+    } 
+*/
+
+/* OPTIONAL
+    .custom-class::after  {
+        background-color: ;
+    }
+
+    .custom-class .brodevs-image__icon {
+        width: ;
+        fill: ;
+    } 
+
+    .custom-class .brodevs-image__icon:hover {
+        transform: none;
+    }
+*/

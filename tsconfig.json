@@ -1,12 +1,22 @@
 {
+	"files": [],
+	"references": [
+		{
+			"path": "./tsconfig.app.json"
+		},
+		{
+			"path": "./tsconfig.node.json"
+		}
+	],
 	"compilerOptions": {
+		"noImplicitAny": false,
+		"skipLibCheck": true,
 		"target": "ESNext",
 		"module": "ESNext",
 		"jsx": "react-jsx",
 		"strict": false,
 		"moduleResolution": "Node",
 		"esModuleInterop": true,
-		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
 		"baseUrl": ".",
 		"paths": {
@@ -16,11 +26,17 @@
 			"@components/*": [
 				"src/components/*"
 			],
+			"@brodevs/*": [
+				"src/components/brodevs/*"
+			],
 			"@contexts/*": [
 				"src/contexts/*"
 			],
 			"@hooks/*": [
 				"src/hooks/*"
+			],
+			"@layouts/*": [
+				"src/layouts/*"
 			],
 			"@pages/*": [
 				"src/pages/*"
@@ -29,7 +45,7 @@
 				"src/services/*"
 			],
 			"@icons/*": [
-				"src/icons/*"
+				"src/components/icons/*"
 			],
 			"@util/*": [
 				"src/util/*"
