@@ -73,3 +73,19 @@ img {
     --light-green: #2ecc71;
     --black: #333333;
 }
+
+.brodevs-text {
+    max-width: 400px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@keyframes fade-in{
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}

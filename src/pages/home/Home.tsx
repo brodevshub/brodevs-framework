@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <div className='home'>
             <MainPhoto />
-            {/* <BrodevsForm /> */}
+            {/* <BrodevsForm /> */
 
             <section className='home__section'>
                 <h2 className='home__title'>

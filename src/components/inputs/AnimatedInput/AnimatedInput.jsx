@@ -22,10 +22,7 @@ export default function AnimatedInput({
     const [isFocused, setIsFocused] = useState(false);
     const [hasValue, setHasValue] = useState(true);
 
-    // Synchronize hasValue state with the incoming value prop
     useEffect(() => {
-        console.log(value);
-
         setHasValue(value !== "");
     }, [value]);
 
