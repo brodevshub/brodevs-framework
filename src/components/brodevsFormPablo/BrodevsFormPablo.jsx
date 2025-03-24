@@ -1,4 +1,3 @@
-import NameIcon from "@components/icons/NameIcon";
 import AnimatedInput from "@components/inputs/AnimatedInput/AnimatedInput";
 import CustomSelect from "@components/selects/CustomSelect"; // Import the new CustomSelect
 import { useEffect, useState } from "react";
@@ -6,7 +5,7 @@ import './BrodevsForm.css';
 import municipiosData from './data/municipios.json'; // Ensure to import municipios data
 import provinciasData from './data/provinciasSinTilde.json'; // Ensure to import provincias data
 
-export default function BrodevsForm({ title }) {
+export default function BrodevsFormPablo({ title }) {
     const defaultRegion = provinciasData.find(region => region.nm === "Madrid") || {};
     const defaultCity = municipiosData.find(city => city.nm === "Alcorcón") || {};
 
@@ -82,7 +81,7 @@ export default function BrodevsForm({ title }) {
                 labelText="Nombre"
                 value={formValues.name}
                 handleChange={handleChange}
-                icon={NameIcon}
+            // icon={NameIcon}
             />
 
             <AnimatedInput
@@ -90,7 +89,7 @@ export default function BrodevsForm({ title }) {
                 placeholder="Apellidos"
                 value={formValues.surname}
                 handleChange={handleChange}
-                icon={NameIcon}
+            // icon={NameIcon}
             />
 
             <div className='two-column'>
@@ -99,7 +98,7 @@ export default function BrodevsForm({ title }) {
                     labelText="Teléfono"
                     value={formValues.phone}
                     handleChange={handleChange}
-                    icon={NameIcon}
+                // icon={NameIcon}
                 />
 
                 <AnimatedInput
@@ -107,7 +106,7 @@ export default function BrodevsForm({ title }) {
                     placeholder="Email"
                     value={formValues.email}
                     handleChange={handleChange}
-                    icon={NameIcon}
+                // icon={NameIcon}
                 />
             </div>
 

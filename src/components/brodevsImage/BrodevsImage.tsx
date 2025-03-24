@@ -1,4 +1,5 @@
 import { BrodevsIcon } from '@icons/brodevsIcons/BrodevsIcon.tsx';
+import clsx from 'clsx';
 import { useEffect, useId, useRef, useState } from 'react';
 import { BeatLoader } from 'react-spinners';
 import './brodevsImage.css';
@@ -6,7 +7,7 @@ import './brodevsImage.css';
 interface BrodevsImageProps {
     alt?: string;
     className?: string;
-    isEditable?: boolean;
+    disabled?: boolean;
     handleFileChange?: (file: File) => void;
     loaderColor?: string;
     loaderSize?: number;
@@ -17,7 +18,7 @@ interface BrodevsImageProps {
 export default function BrodevsImage({
     alt = 'BrodevsImage',
     className = '',
-    isEditable = false,
+    disabled = false,
     handleFileChange = () => { },
     loaderColor = '#f8f8f8',
     loaderSize = 15,
@@ -55,7 +56,12 @@ export default function BrodevsImage({
 
     return (
         <div
-            className={`brodevs-image ${isEditable ? 'brodevs-image--editable' : ''} ${className}`}
+
+            className={clsx(
+                "brodevs-image",
+                { "brodevs-image--disabled": disabled },
+                className
+            )}
             onClick={onClick}
         >
             <BeatLoader
@@ -75,7 +81,7 @@ export default function BrodevsImage({
                 />
             )}
 
-            {isEditable && !isLoading && (
+            {!disabled && !isLoading && (
                 <>
                     <label htmlFor={`brodevs-image__input-${uniqueId}`} className='brodevs-image__label'>
                         <input

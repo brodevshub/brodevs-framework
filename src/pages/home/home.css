@@ -20,11 +20,25 @@ html, body, #root {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding-bottom: 100px;
+    margin-bottom: 100px;
     gap: 10px;
 }
 
-.brodevs-image-container {
+.home-counter {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.home__brodevs-input {
+    width: 300px;
+    --brodevs-input-bg-color: var(--black);
+    --brodevs-input-static-color: var(--ghost);
+    --brodevs-input-disabled-color: var(--lava);
+    --brodevs-input-focused-color: var(--light-green);
+    margin-bottom: 10px;
+}
+
+.brodevs-images-container {
     display: flex;
     align-items: center;
     justify-content: center;

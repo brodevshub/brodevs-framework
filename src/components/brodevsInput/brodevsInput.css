@@ -1,0 +1,80 @@
+/* container de todo el input */
+.brodevs-input-container {
+    position: relative;
+    width: 100%;
+    border-radius: 4px;
+    --brodevs-input-bg-color: white;
+    --brodevs-input-static-color: black;
+    --brodevs-input-disabled-color: gray;
+    --brodevs-input-focused-color: blue;
+}
+
+.brodevs-input-label {
+    color: var(--brodevs-input-static-color);
+    background-color: var(--brodevs-input-bg-color);
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    border-radius: 4px;
+    font-size: 16px;
+    pointer-events: none;
+    padding: 2px 8px;
+    cursor: text;
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+.brodevs-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--brodevs-input-static-color);
+    fill: var(--brodevs-input-static-color);
+    background-color: var(--brodevs-input-bg-color);
+    border: 1px solid;
+    border-radius: 4px;
+    overflow: hidden;
+    outline: none;
+    transition: all 0.5s;
+}
+
+.brodevs-input__input,
+.brodevs-input__textarea {
+    color: inherit;
+    background-color: transparent;
+    width: 100%;
+    padding: 12px 12px;
+    font-size: 16px;
+    border: 0;
+    outline: none;
+    resize: none;
+    scrollbar-width: none;
+    field-sizing: content;
+}
+
+.brodevs-input__icon {
+    fill: inherit;
+    margin-right: 12px;
+    max-width: 25px;
+}
+
+.brodevs-input-container--focused .brodevs-input-label,
+.brodevs-input-container--hasValue .brodevs-input-label {
+    top: 0;
+    font-size: 14px;
+    outline: 1px solid;
+}
+
+.brodevs-input-container--focused .brodevs-input,
+.brodevs-input-container--focused .brodevs-input-label {
+    color: var(--brodevs-input-focused-color);
+    fill: var(--brodevs-input-focused-color);
+    box-shadow: 0 0 5px var(--brodevs-input-focused-color);
+}
+
+.brodevs-input-container--disabled .brodevs-input-label,
+.brodevs-input-container--disabled .brodevs-input {
+    color: var(--brodevs-input-disabled-color);
+    fill: var(--brodevs-input-disabled-color);
+}
