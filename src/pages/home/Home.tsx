@@ -80,16 +80,15 @@ export default function Home() {
                     <BrodevsImage
                         className='brodevs-image-1'
                         src='/yinYang-led.png'
+                        disabled
                     />
                     <BrodevsImage
                         className='brodevs-image-2'
                         src='/yinYang-led.png'
-                        isEditable
                     />
                     <BrodevsImage
                         className='brodevs-image-3'
                         src='/yinYang-led.png'
-                        isEditable
                     />
                 </div>
             </section>
