@@ -15,6 +15,8 @@
     width: 200px;
     aspect-ratio: 1/1;
     border-radius: 50%;
+    --brodevs-input-static-color: var(--ghost);
+    --brodevs-input-disabled-color: var(--lava);
 }
 
 .brodevs-form__submit-btn {

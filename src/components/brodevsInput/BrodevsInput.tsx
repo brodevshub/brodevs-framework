@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Tooltip } from 'react-tooltip';
 import { BrodevsIcon } from '../icons/brodevsIcons/BrodevsIcon';
 import './brodevsInput.css';
 
@@ -7,6 +8,7 @@ interface BrodevsInputProps extends React.InputHTMLAttributes<HTMLInputElement |
     autoFocus?: boolean;
     className?: string;
     disabled?: boolean;
+    error?: string;
     handleChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     icon?: string | null;
     id?: string;
@@ -21,6 +23,7 @@ export default function BrodevsInput({
     autoFocus = false,
     className = '',
     disabled = false,
+    error = '',
     handleChange,
     icon,
     id = '',
@@ -32,6 +35,8 @@ export default function BrodevsInput({
     const [isFocused, setIsFocused] = useState(false);
     const [hasValue, setHasValue] = useState(false);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const inputRef = useRef<HTMLInputElement>(null);
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     useEffect(() => {
         setHasValue(value !== "" && value !== undefined && value !== null);
@@ -39,17 +44,20 @@ export default function BrodevsInput({
 
     const handleFocus = () => setIsFocused(true);
     const handleBlur = () => setIsFocused(false);
-    const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible)
     const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>) => event.key === "Enter" && setIsFocused(false);
+    const handleIconClick = () => (type === 'textarea' ? textareaRef : inputRef).current?.focus();
+    const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible);
 
     return (
         <div
+            id={`brodevs-input-container--${id}`}
             className={clsx(
                 "brodevs-input-container",
                 {
                     "brodevs-input-container--hasValue": hasValue,
                     "brodevs-input-container--focused": isFocused,
                     "brodevs-input-container--disabled": disabled,
+                    "brodevs-input-container--error": error !== '',
                 },
                 className
             )}
@@ -58,6 +66,7 @@ export default function BrodevsInput({
             <div className="brodevs-input">
                 {type === 'textarea' ? (
                     <textarea
+                        ref={textareaRef}
                         id={id}
                         className='brodevs-input__textarea'
                         name={name}
@@ -72,6 +81,7 @@ export default function BrodevsInput({
                     />
                 ) : (
                     <input
+                        ref={inputRef}
                         id={id}
                         className='brodevs-input__input'
                         name={name}
@@ -88,11 +98,20 @@ export default function BrodevsInput({
                 )}
 
                 {icon ? (
-                    <BrodevsIcon name={icon} className="brodevs-input__icon" />
+                    <BrodevsIcon name={icon} className="brodevs-input__icon" onClick={handleIconClick} />
                 ) : type === "password" ? (
                     <BrodevsIcon name={isPasswordVisible ? 'eyeClosed' : 'eyeOpened'} className="brodevs-input__icon" style={{ cursor: 'pointer' }} onClick={togglePasswordVisibility} />
                 ) : null}
             </div>
+
+            {
+                error !== '' &&
+                <Tooltip
+                    anchorSelect={`#brodevs-input-container--${id}`}
+                    content={error}
+                    className='brodevs-input__tooltip'
+                />
+            }
         </div>
     );
 }

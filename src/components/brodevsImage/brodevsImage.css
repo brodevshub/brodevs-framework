@@ -1,10 +1,22 @@
 .brodevs-image {
+    --brodevs-input-static-color: black;
+    --brodevs-input-disabled-color: gray;
     width: 300px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    outline: 2px solid var(--brodevs-input-static-color);
+    transition: all 0.5s;
+}
+
+.brodevs-image--disabled {
+    outline-color: var(--brodevs-input-disabled-color);
+}
+
+.brodevs-image--error {
+    outline-color: var(--light-red);
 }
 
 .brodevs-image::after {
@@ -58,11 +70,15 @@
     position: absolute;
     inset: 0;
     margin: auto;
-    fill: var(--ghost);
+    fill: var(--brodevs-input-static-color);
     cursor: pointer;
     transition: all 0.5s;
     animation: fade-in 0.5s linear;
     z-index: 102;
+}
+
+.brodevs-image--error .brodevs-image__icon {
+    fill: var(--light-red);
 }
 
 .brodevs-image__label:hover ~ .brodevs-image__icon {

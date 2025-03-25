@@ -29,7 +29,6 @@ export default function Home() {
                     type='number'
                     name='home-name-input'
                     value=''
-                    autoFocus={true}
                 />
 
                 <BrodevsInput

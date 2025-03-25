@@ -28,6 +28,7 @@
 .brodevs-input {
     position: relative;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     color: var(--brodevs-input-static-color);
     fill: var(--brodevs-input-static-color);
@@ -41,22 +42,32 @@
 
 .brodevs-input__input,
 .brodevs-input__textarea {
+    padding: 12px;
     color: inherit;
     background-color: transparent;
-    width: 100%;
-    padding: 12px 12px;
+    width: calc(100% - 35px);
     font-size: 16px;
     border: 0;
     outline: none;
     resize: none;
     scrollbar-width: none;
     field-sizing: content;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .brodevs-input__icon {
     fill: inherit;
-    margin-right: 12px;
-    max-width: 25px;
+    min-width: 25px;
+    margin-right: 10px;
+    height: 25px;
+}
+
+.brodevs-input__tooltip {
+    background-color: var(--light-red) !important;
+    z-index: 1000;
 }
 
 .brodevs-input-container--focused .brodevs-input-label,
@@ -70,7 +81,13 @@
 .brodevs-input-container--focused .brodevs-input-label {
     color: var(--brodevs-input-focused-color);
     fill: var(--brodevs-input-focused-color);
-    box-shadow: 0 0 5px var(--brodevs-input-focused-color);
+    box-shadow: 0 0 5px;
+}
+
+.brodevs-input-container--error .brodevs-input,
+.brodevs-input-container--error .brodevs-input-label {
+    color: var(--light-red);
+    fill: var(--light-red);
 }
 
 .brodevs-input-container--disabled .brodevs-input-label,

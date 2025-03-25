@@ -25,6 +25,7 @@
 
 .main-photo__img { 
   width: 80%;
+  aspect-ratio: 80/26;
   max-width: 900px;
 }
 

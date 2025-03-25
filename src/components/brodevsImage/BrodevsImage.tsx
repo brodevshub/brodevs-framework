@@ -1,14 +1,18 @@
 import { BrodevsIcon } from '@icons/brodevsIcons/BrodevsIcon.tsx';
 import clsx from 'clsx';
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { BeatLoader } from 'react-spinners';
+import { Tooltip } from 'react-tooltip';
 import './brodevsImage.css';
 
 interface BrodevsImageProps {
     alt?: string;
     className?: string;
     disabled?: boolean;
-    handleFileChange?: (file: File) => void;
+    error?: string;
+    handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    id?: string;
+    name?: string;
     loaderColor?: string;
     loaderSize?: number;
     onClick?: () => void;
@@ -19,7 +23,10 @@ export default function BrodevsImage({
     alt = 'BrodevsImage',
     className = '',
     disabled = false,
-    handleFileChange = () => { },
+    error = '',
+    handleChange = () => { },
+    id = '',
+    name = '',
     loaderColor = '#f8f8f8',
     loaderSize = 15,
     onClick = () => { },
@@ -28,7 +35,6 @@ export default function BrodevsImage({
     const [image, setImage] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const inputRef = useRef<HTMLInputElement>(null);
-    const uniqueId = useId();
 
     useEffect(() => {
         if (src) {
@@ -37,10 +43,10 @@ export default function BrodevsImage({
         }
     }, [src]);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
-            handleFileChange(file);
+            handleChange(event);
             setIsLoading(true);
 
             const reader = new FileReader();
@@ -55,49 +61,60 @@ export default function BrodevsImage({
     const handleImageLoad = () => setIsLoading(false);
 
     return (
-        <div
-
-            className={clsx(
-                "brodevs-image",
-                { "brodevs-image--disabled": disabled },
-                className
-            )}
-            onClick={onClick}
-        >
-            <BeatLoader
-                className='brodevs-image__loader'
-                loading={isLoading}
-                size={loaderSize}
-                color={loaderColor}
-            />
-
-            {image && (
-                <img
-                    alt={alt}
-                    className='brodevs-image__img'
-                    src={image}
-                    onLoad={handleImageLoad}
-                    style={{ display: isLoading ? 'none' : 'block' }}
+        <>
+            <div
+                id={`brodevs-image--${id}`}
+                className={clsx(
+                    "brodevs-image",
+                    { "brodevs-image--disabled": disabled },
+                    { "brodevs-image--error": error },
+                    className
+                )}
+                onClick={onClick}
+            >
+                <BeatLoader
+                    className='brodevs-image__loader'
+                    loading={isLoading}
+                    size={loaderSize}
+                    color={loaderColor}
                 />
-            )}
 
-            {!disabled && !isLoading && (
-                <>
-                    <label htmlFor={`brodevs-image__input-${uniqueId}`} className='brodevs-image__label'>
-                        <input
-                            id={`brodevs-image__input-${uniqueId}`}
-                            className='brodevs-image__input'
-                            ref={inputRef}
-                            type='file'
-                            accept='image/*'
-                            onChange={handleChange}
-                            autoComplete='off'
-                            autoFocus={false}
-                        />
-                    </label>
-                    <BrodevsIcon name='image' className='brodevs-image__icon' />
-                </>
-            )}
-        </div>
+                {image && (
+                    <img
+                        alt={alt}
+                        className='brodevs-image__img'
+                        src={image}
+                        onLoad={handleImageLoad}
+                        style={{ display: isLoading ? 'none' : 'block' }}
+                    />
+                )}
+
+                {!disabled && !isLoading && (
+                    <>
+                        <label htmlFor={id} className='brodevs-image__label'>
+                            <input
+                                accept='image/*'
+                                className='brodevs-image__input'
+                                id={id}
+                                name={name}
+                                ref={inputRef}
+                                onChange={handleFileChange}
+                                type='file'
+                            />
+                        </label>
+                        <BrodevsIcon name='image' className='brodevs-image__icon' />
+                    </>
+                )}
+            </div>
+
+            {
+                error !== '' &&
+                <Tooltip
+                    anchorSelect={`#brodevs-image--${id}`}
+                    content={error}
+                    className='brodevs-input__tooltip'
+                />
+            }
+        </>
     );
 }
