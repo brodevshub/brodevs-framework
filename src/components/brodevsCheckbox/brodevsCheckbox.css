@@ -1,24 +1,71 @@
-.checkbox-input {
+.brodevs-checkbox {
+    --brodevs-checkbox-disabled-color: gray;
+    --brodevs-checkbox-static-color: white;
+    --brodevs-checkbox-check-color: black;
+    --brodevs-checkbox-label-link-color: rgb(83, 132, 231);
     display: flex;
     align-items: center;
-    color: var(--ghost);
-    margin-left: 2px;
-    transition: all 0.5s;
+    gap: 7px;
+    color: var(--brodevs-checkbox-static-color);
 }
 
-.checkbox-input--disabled {
-    color: var(--lava)
-}
-
-.checkbox-input__label {
+.brodevs-checkbox__label {
     cursor: pointer;
+    transition: all 0.3s;
 }
 
-.checkbox-input__input {
-    margin-right: 7px;
+.brodevs-checkbox__label a {
+    color: var(--brodevs-checkbox-label-link-color);
+    text-decoration: none;
+    transition: all 0.3s;
 }
 
-.checkbox-input--disabled .checkbox-input__input:checked {
-    background-color: var(--lava);
-    border-color: var(--lava);
+.brodevs-checkbox__label a:hover {
+    text-decoration: underline;
+}
+
+.brodevs-checkbox__input {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    color: inherit;
+    border: 2px solid;
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.brodevs-checkbox__input:checked {
+    background-color: var(--brodevs-checkbox-static-color);
+    color: var(--brodevs-checkbox-static-color);
+}
+
+.brodevs-checkbox__input:checked::after {
+    content: '✔';
+    font-size: 14px;
+    color: var(--brodevs-checkbox-check-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.brodevs-checkbox__tooltip {
+    background-color: var(--light-red) !important;
+    z-index: 1000;
+}
+
+.brodevs-checkbox--disabled .brodevs-checkbox__input:checked {
+    background-color: var(--brodevs-checkbox-disabled-color);
+    color: var(--brodevs-checkbox-disabled-color);
+}
+
+.brodevs-checkbox--disabled, .brodevs-checkbox--disabled .brodevs-checkbox__label a {
+    color: var(--brodevs-checkbox-disabled-color)
+}
+
+.brodevs-checkbox--error, .brodevs-checkbox--error .brodevs-checkbox__label a {
+    color: var(--light-red)
 }

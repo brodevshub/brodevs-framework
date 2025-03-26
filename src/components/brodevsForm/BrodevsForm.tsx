@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import BrodevsCheckbox from '../brodevsCheckbox/BrodevsCheckbox';
 import BrodevsImage from '../brodevsImage/BrodevsImage';
 import BrodevsInput from '../brodevsInput/BrodevsInput';
 import { BrodevsIcon } from '../icons/brodevsIcons/BrodevsIcon';
@@ -10,6 +11,7 @@ interface FormData {
     age: string;
     password: string;
     passwordConfirmation: string;
+    privacyPolicy: boolean;
 }
 
 interface BrodevsFormProps {
@@ -27,9 +29,10 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
         name: '',
         age: '',
         password: '',
-        passwordConfirmation: ''
+        passwordConfirmation: '',
+        privacyPolicy: false
     });
-    const requiredFields = ["profilePicture", "name", "password", "passwordConfirmation"];
+    const requiredFields = ["profilePicture", "name", "password", "passwordConfirmation", "privacyPolicy"];
 
     useEffect(() => {
         setFormData({
@@ -37,7 +40,8 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
             name: element?.name || '',
             age: element?.age || '18',
             password: element?.password || '',
-            passwordConfirmation: element?.passwordConfirmation || ''
+            passwordConfirmation: element?.passwordConfirmation || '',
+            privacyPolicy: false
         });
         setIsDisabled(element ? true : false);
     }, [element]);
@@ -45,8 +49,8 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
     const validateField = (name: string, value: any) => {
         let error = "";
 
-        if (name === "profilePicture" && value instanceof File) {
-            if (!value.type.startsWith('image/')) {
+        if (value instanceof File) {
+            if (name === "profilePicture" && !value.type.startsWith('image/')) {
                 error = "La imagen debe ser una imagen válida.";
             }
         } else if (typeof value === 'string') {
@@ -63,14 +67,13 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
             }
         }
 
-        //add checkbox validation
-
         setErrors((prev) => ({ ...prev, [name]: error }));
     };
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value, checked, files, type } = event.target;
-        const newValue = type === 'checkbox' ? checked : type === 'file' ? files?.[0] : value;
+        const target = event.target as HTMLInputElement;
+        const { name, value, type } = target;
+        const newValue = type === 'checkbox' ? target.checked : type === 'file' ? (target.files?.[0] || null) : value;
 
         setFormData((prevData) => ({
             ...prevData,
@@ -81,8 +84,6 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
     };
 
 
-    console.log(formData?.profilePicture);
-
     const validateForm = () => {
         const newErrors: { [key: string]: string } = {};
 
@@ -90,8 +91,12 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
             if (requiredFields.includes(key)) {
                 if (key === "profilePicture" && (typeof value === "string")) {
                     newErrors[key] = "Por favor, elige una imagen.";
-                } else if (!value.trim()) {
+                } else if (typeof value === "string" && !value.trim()) {
                     newErrors[key] = "Este campo es obligatorio.";
+                } else if (typeof value === "boolean") {
+                    if (key === "privacyPolicy" && !formData?.privacyPolicy) {
+                        newErrors[key] = "Debe aceptar la política de privacidad y las condiciones de uso.";
+                    }
                 }
             } else {
                 validateField(key, value);
@@ -177,6 +182,28 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
                 name="passwordConfirmation"
                 type="password"
                 value={formData?.passwordConfirmation}
+            />
+
+            <BrodevsCheckbox
+                checked={formData?.privacyPolicy}
+                className={`${className}__checkbox`}
+                disabled={isDisabled}
+                error={errors.privacyPolicy}
+                handleChange={handleChange}
+                id="brodevs-form__privacy-policy"
+                label={
+                    <>
+                        Acepta la{" "}
+                        <a href="/politica-de-privacidad" target="_blank" rel="noopener noreferrer">
+                            política de privacidad
+                        </a>{" "}
+                        y las{" "}
+                        <a href="/terminos-y-condiciones" target="_blank" rel="noopener noreferrer">
+                            condiciones de uso
+                        </a>.
+                    </>
+                }
+                name="privacyPolicy"
             />
 
             <button className="brodevs-form__submit-btn">
