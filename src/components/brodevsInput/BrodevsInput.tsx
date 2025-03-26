@@ -68,7 +68,7 @@ export default function BrodevsInput({
                     <textarea
                         ref={textareaRef}
                         id={id}
-                        className='brodevs-input__textarea'
+                        className='brodevs-input__textarea brodevs-text'
                         name={name}
                         value={value}
                         onFocus={handleFocus}
@@ -83,7 +83,7 @@ export default function BrodevsInput({
                     <input
                         ref={inputRef}
                         id={id}
-                        className='brodevs-input__input'
+                        className='brodevs-input__input brodevs-text'
                         name={name}
                         type={type === 'password' && !isPasswordVisible ? type : "text"}
                         value={value}
