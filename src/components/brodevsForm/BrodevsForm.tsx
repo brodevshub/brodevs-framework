@@ -15,7 +15,7 @@ interface FormData {
 }
 
 interface BrodevsFormProps {
-    element: FormData
+    element?: FormData
 }
 
 export default function BrodevsForm({ element }: BrodevsFormProps) {

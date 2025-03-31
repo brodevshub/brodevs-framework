@@ -82,10 +82,13 @@ export default function Home() {
                         disabled
                     />
                     <BrodevsImage
+                        id='brodevs-image-2'
                         className='brodevs-image-2'
                         src='/yinYang-led.png'
+                        handleChange={() => { }}
                     />
                     <BrodevsImage
+                        id='brodevs-image-3'
                         className='brodevs-image-3'
                         src='/yinYang-led.png'
                     />

@@ -45,10 +45,16 @@ html, body, #root {
     gap: 25px;
 }
 
+
+.brodevs-images-container img{
+    object-fit: contain;
+}
+
 .brodevs-image-1 {
     width: 300px;
     aspect-ratio: 1/1;
     border-radius: 50%;
+    outline: 0px;
 }
 
 .brodevs-image-2 {
@@ -67,6 +73,6 @@ html, body, #root {
     border-radius: 50%;
 }
 
-.brodevs-image-3 .brodevs-image__icon {
-    fill: rgb(95, 95, 224);
+.brodevs-image-3 {
+    --brodevs-input-static-color: rgb(95, 95, 224);
 }

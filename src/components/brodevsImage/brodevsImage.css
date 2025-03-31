@@ -1,5 +1,5 @@
 .brodevs-image {
-    --brodevs-input-static-color: black;
+    --brodevs-input-static-color: white;
     --brodevs-input-disabled-color: gray;
     width: 300px;
     position: relative;
