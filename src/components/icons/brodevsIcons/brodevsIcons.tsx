@@ -21,6 +21,14 @@ export const brodevsIcons: Record<string, (props: React.SVGProps<SVGSVGElement>)
         <svg {...props} viewBox="0 -960 960 960"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" /></svg>
     ),
 
+    chevronDown: (props) => (
+        <svg {...props} viewBox="0 -960 960 960"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" /></svg>
+    ),
+
+    chevronUp: (props) => (
+        <svg {...props} viewBox="0 -960 960 960"><path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z" /></svg>
+    ),
+
     chevronDoubleRight: (props) => (
         <svg {...props} viewBox="0 -960 960 960"><path d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z" /></svg>
     ),

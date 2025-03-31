@@ -47,12 +47,18 @@
     fill: var(--black);
 }
 
-.brodevs-form__input {
+.brodevs-form__input, .brodevs-form__select {
     --brodevs-input-bg-color: rgb(41, 41, 41);
     --brodevs-input-static-color: var(--ghost);
     --brodevs-input-disabled-color: var(--lava);
     --brodevs-input-focused-color: var(--ghost);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.brodevs-form__select {
+    --brodevs-select-bg-color: rgb(41, 41, 41);
+    --brodevs-select-static-color: var(--ghost);
+    --brodevs-select-disabled-color: var(--lava);
+    --brodevs-select-focused-color: var(--ghost);
 }
 
 .brodevs-form__checkbox {

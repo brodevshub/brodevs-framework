@@ -112,7 +112,7 @@ export default function BrodevsImage({
                 <Tooltip
                     anchorSelect={`#brodevs-image--${id}`}
                     content={error}
-                    className='brodevs-input__tooltip'
+                    className='brodevs-image__tooltip'
                 />
             }
         </>

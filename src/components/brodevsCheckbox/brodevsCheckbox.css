@@ -54,7 +54,7 @@
 
 .brodevs-checkbox__tooltip {
     background-color: var(--light-red) !important;
-    z-index: 1000;
+    z-index: 10000;
 }
 
 .brodevs-checkbox--disabled .brodevs-checkbox__input:checked {

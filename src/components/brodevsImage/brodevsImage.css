@@ -85,6 +85,11 @@
     transform: scale(1.1);
 }
 
+.brodevs-image__tooltip {
+    background-color: var(--light-red) !important;
+    z-index: 10000;
+}
+
 /* MANDATORY
     .custom-class {
         width: ;

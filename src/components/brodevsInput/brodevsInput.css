@@ -1,12 +1,13 @@
 /* container de todo el input */
 .brodevs-input-container {
-    position: relative;
-    width: 100%;
-    border-radius: 4px;
     --brodevs-input-bg-color: white;
     --brodevs-input-static-color: black;
     --brodevs-input-disabled-color: gray;
     --brodevs-input-focused-color: blue;
+    position: relative;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .brodevs-input-label {
@@ -63,7 +64,7 @@
 
 .brodevs-input__tooltip {
     background-color: var(--light-red) !important;
-    z-index: 1000;
+    z-index: 10000;
 }
 
 .brodevs-input-container--focused .brodevs-input-label,

@@ -1,0 +1,140 @@
+.brodevs-select {
+    --brodevs-select-bg-color: white;
+    --brodevs-select-static-color: black;
+    --brodevs-select-disabled-color: gray;
+    --brodevs-select-focused-color: blue;
+    position: relative;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.brodevs-select-label {
+    top: 0;
+    font-size: 14px;
+    outline: 1px solid;
+    color: var(--brodevs-select-static-color);
+    background-color: var(--brodevs-select-bg-color);
+    position: absolute;
+    left: 12px;
+    transform: translateY(-50%);
+    border-radius: 4px;
+    pointer-events: none;
+    padding: 2px 8px;
+    z-index: 1003;
+    transition: all 0.3s;
+}
+
+.brodevs-select__current-option {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--brodevs-select-static-color);
+    fill: var(--brodevs-select-static-color);
+    background-color: var(--brodevs-select-bg-color);
+    border: 1px solid;
+    border-radius: 4px;
+    overflow: hidden;
+    outline: none;
+    z-index: 1002;
+    transition: all 0.5s;
+}
+
+.brodevs-select__current-option-label {
+    padding: 12px;
+    color: inherit;
+    background-color: transparent;
+    width: calc(100% - 35px);
+    font-size: 16px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+.brodevs-select__current-option-label--searchable {
+    cursor: text;
+}
+
+.brodevs-select__menu {
+    display: block;
+    background-color: var(--brodevs-select-bg-color);
+    position: absolute;
+    border-radius: 0 0 8px 8px;
+    z-index: 1000;
+    list-style: none;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--brodevs-select-static-color) var(--brodevs-select-bg-color);
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.brodevs-select__menu--open {
+    animation-name: slide-down;
+}
+
+.brodevs-select__menu--close {
+    animation-name: slide-up;
+}
+
+@keyframes slide-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+}
+
+.brodevs-select__option {
+    padding: 12px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.brodevs-select__option:hover,
+.brodevs-select__option--selected {
+    background-color: var(--brodevs-select-focused-color);
+    color:  var(--brodevs-select-bg-color);
+}
+
+.brodevs-select__tooltip {
+    background-color: var(--light-red) !important;
+    z-index: 10000;
+}
+
+.brodevs-select--focused .brodevs-select,
+.brodevs-select--focused .brodevs-select-label {
+    color: var(--brodevs-input-focused-color);
+    fill: var(--brodevs-input-focused-color);
+    box-shadow: 0 0 5px;
+}
+
+.brodevs-select--error .brodevs-select__current-option,
+.brodevs-select--error .brodevs-select-label {
+    color: var(--light-red);
+    fill: var(--light-red);
+}
+
+.brodevs-select--disabled .brodevs-select__current-option,
+.brodevs-select--disabled .brodevs-select-label {
+    color: var(--brodevs-input-disabled-color);
+    fill: var(--brodevs-input-disabled-color);
+    pointer-events: none;
+}

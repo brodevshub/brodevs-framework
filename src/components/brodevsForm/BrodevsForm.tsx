@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import BrodevsCheckbox from '../brodevsCheckbox/BrodevsCheckbox';
 import BrodevsImage from '../brodevsImage/BrodevsImage';
 import BrodevsInput from '../brodevsInput/BrodevsInput';
+import BrodevsSelect from '../brodevsSelect/BrodevsSelect';
 import { BrodevsIcon } from '../icons/brodevsIcons/BrodevsIcon';
 import './brodevsForm.css';
 
@@ -12,6 +13,7 @@ interface FormData {
     password: string;
     passwordConfirmation: string;
     privacyPolicy: boolean;
+    role: string;
 }
 
 interface BrodevsFormProps {
@@ -30,9 +32,10 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
         age: '',
         password: '',
         passwordConfirmation: '',
-        privacyPolicy: false
+        privacyPolicy: false,
+        role: ''
     });
-    const requiredFields = ["profilePicture", "name", "password", "passwordConfirmation", "privacyPolicy"];
+    const requiredFields = ["profilePicture", "name", "password", "passwordConfirmation", "privacyPolicy", "role"];
 
     useEffect(() => {
         setFormData({
@@ -41,7 +44,8 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
             age: element?.age || '18',
             password: element?.password || '',
             passwordConfirmation: element?.passwordConfirmation || '',
-            privacyPolicy: false
+            privacyPolicy: element?.privacyPolicy || false,
+            role: element?.role || ''
         });
         setIsDisabled(element ? true : false);
     }, [element]);
@@ -82,7 +86,6 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
         validateField(name, newValue);
         setHasChanges(true);
     };
-
 
     const validateForm = () => {
         const newErrors: { [key: string]: string } = {};
@@ -158,6 +161,27 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
                 name="age"
                 type="number"
                 value={formData?.age}
+            />
+
+            <BrodevsSelect
+                className={`${className}__select`}
+                disabled={isDisabled}
+                error={errors.role}
+                handleChange={handleChange}
+                id="brodevs-form__role"
+                // icon="profile"
+                label="Role"
+                name="role"
+                options={[
+                    { label: 'User', value: '1' },
+                    { label: 'Admin', value: '2' },
+                    { label: 'SuperAdmin', value: '3' },
+                ]}
+                //searchable
+                specialOptions={[
+                    { label: '-- Crear rol --', onClick: () => { }, position: 'first' },
+                ]}
+                value={formData?.role}
             />
 
             <BrodevsInput
