@@ -64,3 +64,13 @@
 .brodevs-form__checkbox {
     margin-right: auto;
 }
+
+.brodevs-form__radio-group {
+    --brodevs-radio-group-disabled-color: var(--lava);
+    --brodevs-radio-group-static-color: var(--ghost);
+    --brodevs-radio-group-check-color: var(--ghost);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}

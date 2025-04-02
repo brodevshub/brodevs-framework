@@ -1,0 +1,21 @@
+.brodevs-radio-group {
+    --brodevs-radio-group-disabled-color: gray;
+    --brodevs-radio-group-static-color: white;
+    --brodevs-radio-group-check-color: white;
+    width: 100%;
+    color: var(--brodevs-radio-group-static-color);
+}
+
+.brodevs-radio-group--disabled .brodevs-radio-group__label{
+    color: var(--brodevs-radio-group-disabled-color);
+}
+
+.brodevs-radio-group--error .brodevs-radio-group__label{
+    color: var(--light-red);
+}
+
+.brodevs-radio-group__label {
+    color: inherit;
+    font-size: 16px;
+    transition: all 0.5s;
+}

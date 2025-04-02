@@ -2,52 +2,68 @@ import { useEffect, useState } from 'react';
 import BrodevsCheckbox from '../brodevsCheckbox/BrodevsCheckbox';
 import BrodevsImage from '../brodevsImage/BrodevsImage';
 import BrodevsInput from '../brodevsInput/BrodevsInput';
+import BrodevsRadioGroup from '../brodevsRadioGroup/BrodevsRadioGroup';
 import BrodevsSelect from '../brodevsSelect/BrodevsSelect';
 import { BrodevsIcon } from '../icons/brodevsIcons/BrodevsIcon';
 import './brodevsForm.css';
 
 interface FormData {
-    profilePicture: string;
-    name: string;
     age: string;
+    name: string;
     password: string;
     passwordConfirmation: string;
     privacyPolicy: boolean;
+    profilePicture: string;
     role: string;
+    sex: string;
 }
+
+const DEFAULT_FORM_DATA: FormData = {
+    age: '',
+    name: '',
+    password: '',
+    passwordConfirmation: '',
+    privacyPolicy: false,
+    profilePicture: '',
+    role: '',
+    sex: ''
+};
+
+const REQUIRED_FIELDS = [
+    "name",
+    "password",
+    "passwordConfirmation",
+    "privacyPolicy",
+    "profilePicture",
+    "role",
+    "sex"
+];
+
+const DEFAULT_IMAGE = '/profile-picture.webp';
+const CLASSNAME = 'brodevs-form';
 
 interface BrodevsFormProps {
     element?: FormData
 }
 
 export default function BrodevsForm({ element }: BrodevsFormProps) {
-    const DEFAULT_IMAGE = '/profile-picture.webp';
-    const className = 'brodevs-form';
     const [hasChanges, setHasChanges] = useState<boolean>(false);
     const [isDisabled, setIsDisabled] = useState<boolean>(false);
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
-    const [formData, setFormData] = useState<FormData>({
-        profilePicture: '',
-        name: '',
-        age: '',
-        password: '',
-        passwordConfirmation: '',
-        privacyPolicy: false,
-        role: ''
-    });
-    const requiredFields = ["profilePicture", "name", "password", "passwordConfirmation", "privacyPolicy", "role"];
+    const [formData, setFormData] = useState<FormData>(DEFAULT_FORM_DATA);
 
     useEffect(() => {
         setFormData({
-            profilePicture: element?.profilePicture || DEFAULT_IMAGE,
-            name: element?.name || '',
             age: element?.age || '18',
+            name: element?.name || '',
             password: element?.password || '',
             passwordConfirmation: element?.passwordConfirmation || '',
             privacyPolicy: element?.privacyPolicy || false,
-            role: element?.role || ''
+            profilePicture: element?.profilePicture || DEFAULT_IMAGE,
+            role: element?.role || '',
+            sex: element?.sex || ''
         });
-        setIsDisabled(element ? true : false);
+        setIsDisabled(!!element);
     }, [element]);
 
     const validateField = (name: string, value: any) => {
@@ -91,7 +107,7 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
         const newErrors: { [key: string]: string } = {};
 
         Object.entries(formData).forEach(([key, value]) => {
-            if (requiredFields.includes(key)) {
+            if (REQUIRED_FIELDS.includes(key)) {
                 if (key === "profilePicture" && (typeof value === "string")) {
                     newErrors[key] = "Por favor, elige una imagen.";
                 } else if (typeof value === "string" && !value.trim()) {
@@ -127,23 +143,23 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
     };
 
     return (
-        <form className={className} onSubmit={handleSubmit}>
+        <form className={CLASSNAME} onSubmit={handleSubmit}>
             <BrodevsImage
-                className={`${className}__image`}
+                className={`${CLASSNAME}__image`}
                 disabled={isDisabled}
                 error={errors.profilePicture}
                 handleChange={handleChange}
-                id='brodevs-form__profilePicture'
-                name='profilePicture'
+                id={`${CLASSNAME}__profilePicture`}
+                name="profilePicture"
                 src={formData?.profilePicture}
             />
 
             <BrodevsInput
-                className={`${className}__input`}
+                className={`${CLASSNAME}__input`}
                 error={errors.name}
                 handleChange={handleChange}
                 icon="profile"
-                id="brodevs-form__name"
+                id={`${CLASSNAME}__name`}
                 disabled={isDisabled}
                 label="Name"
                 name="name"
@@ -151,11 +167,11 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
             />
 
             <BrodevsInput
-                className={`${className}__input`}
+                className={`${CLASSNAME}__input`}
                 error={errors.age}
                 handleChange={handleChange}
                 icon="time"
-                id="brodevs-form__age"
+                id={`${CLASSNAME}__age`}
                 disabled={isDisabled}
                 label="Age"
                 name="age"
@@ -164,12 +180,11 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
             />
 
             <BrodevsSelect
-                className={`${className}__select`}
+                className={`${CLASSNAME}__select`}
                 disabled={isDisabled}
                 error={errors.role}
                 handleChange={handleChange}
-                id="brodevs-form__role"
-                // icon="profile"
+                id={`${CLASSNAME}__role`}
                 label="Role"
                 name="role"
                 options={[
@@ -177,18 +192,32 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
                     { label: 'Admin', value: '2' },
                     { label: 'SuperAdmin', value: '3' },
                 ]}
-                //searchable
                 specialOptions={[
                     { label: '-- Crear rol --', onClick: () => { }, position: 'first' },
                 ]}
                 value={formData?.role}
             />
 
+            <BrodevsRadioGroup
+                className={`${CLASSNAME}__radio-group`}
+                disabled={isDisabled}
+                error={errors.sex}
+                handleChange={handleChange}
+                id={`${CLASSNAME}__sex`}
+                label="Sexo:"
+                name="sex"
+                options={[
+                    { value: 'M', label: 'Masculino' },
+                    { value: 'F', label: 'Femenino' },
+                ]}
+                value={formData.sex}
+            />
+
             <BrodevsInput
-                className={`${className}__input`}
+                className={`${CLASSNAME}__input`}
                 error={errors.password}
                 handleChange={handleChange}
-                id="brodevs-form__password"
+                id={`${CLASSNAME}__password`}
                 disabled={isDisabled}
                 label="Password"
                 name="password"
@@ -197,10 +226,10 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
             />
 
             <BrodevsInput
-                className={`${className}__input`}
+                className={`${CLASSNAME}__input`}
                 error={errors.passwordConfirmation}
                 handleChange={handleChange}
-                id="brodevs-form__password-confirmation"
+                id={`${CLASSNAME}__passwordConfirmation`}
                 disabled={isDisabled}
                 label="Password confirmation"
                 name="passwordConfirmation"
@@ -210,11 +239,11 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
 
             <BrodevsCheckbox
                 checked={formData?.privacyPolicy}
-                className={`${className}__checkbox`}
+                className={`${CLASSNAME}__checkbox`}
                 disabled={isDisabled}
                 error={errors.privacyPolicy}
                 handleChange={handleChange}
-                id="brodevs-form__privacy-policy"
+                id={`${CLASSNAME}__privacyPolicy`}
                 label={
                     <>
                         Acepta la{" "}
@@ -230,9 +259,10 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
                 name="privacyPolicy"
             />
 
-            <button className="brodevs-form__submit-btn">
-                <BrodevsIcon name="send" className="brodevs-form__submit-btn-icon" /> Send
+            <button className={`${CLASSNAME}__submit-btn`}>
+                <BrodevsIcon name="send" className={`${CLASSNAME}__submit-btn-icon`} /> Send
             </button>
+
         </form>
     );
 }

@@ -82,9 +82,6 @@ export default function BrodevsSelect<T = any>({
         }
     }, [isOpen, isAnimating]);
 
-    console.log(icon);
-
-
     const handleSelection = (option: OptionType<T>) => {
         const syntheticEvent = {
             target: {

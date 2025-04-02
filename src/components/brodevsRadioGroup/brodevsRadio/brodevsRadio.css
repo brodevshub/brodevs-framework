@@ -1,0 +1,47 @@
+.brodevs-radio {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--brodevs-radio-group-static-color);
+}
+
+.brodevs-radio__label {
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.brodevs-radio__input {
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    color: inherit;
+    border: 2px solid;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.brodevs-radio__input:checked {
+    background-color: var(--brodevs-radio-group-check-color);
+}
+
+.brodevs-radio__tooltip {
+    background-color: var(--light-red) !important;
+    z-index: 10000;
+}
+
+.brodevs-radio--disabled .brodevs-radio__input:checked {
+    background-color: var(--brodevs-radio-group-disabled-color);
+}
+
+.brodevs-radio--disabled,
+.brodevs-radio--disabled .brodevs-radio__label a {
+    color: var(--brodevs-radio-group-disabled-color);
+}
+
+.brodevs-radio--error,
+.brodevs-radio--error .brodevs-radio__label a {
+    color: var(--light-red);
+}
