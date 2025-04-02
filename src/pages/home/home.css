@@ -38,6 +38,22 @@ html, body, #root {
     margin-bottom: 10px;
 }
 
+.home-select {
+    width: 300px;
+    --brodevs-select-bg-color: rgb(41, 41, 41);
+    --brodevs-select-static-color: var(--ghost);
+    --brodevs-select-disabled-color: var(--lava);
+    --brodevs-select-focused-color: var(--ghost);
+}
+
+.home-radio-group {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
 .brodevs-images-container {
     display: flex;
     align-items: center;
@@ -45,20 +61,19 @@ html, body, #root {
     gap: 25px;
 }
 
-
 .brodevs-images-container img{
     object-fit: contain;
 }
 
 .brodevs-image-1 {
-    width: 300px;
+    width: 200px;
     aspect-ratio: 1/1;
     border-radius: 50%;
     outline: 0px;
 }
 
 .brodevs-image-2 {
-    width: 250px;
+    width: 150px;
     aspect-ratio: 1/1;
     border-radius: 50%;
 }
@@ -68,11 +83,8 @@ html, body, #root {
 }
 
 .brodevs-image-3 {
-    width: 200px;
+    width: 100px;
     aspect-ratio: 1/1;
     border-radius: 50%;
-}
-
-.brodevs-image-3 {
-    --brodevs-input-static-color: rgb(95, 95, 224);
+    --brodevs-image-static-color: rgb(95, 95, 224);
 }

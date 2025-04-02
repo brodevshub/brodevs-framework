@@ -23,7 +23,7 @@
     padding: 2px 8px;
     cursor: text;
     z-index: 10;
-    transition: all 0.3s;
+    transition: all 0.5s;
 }
 
 .brodevs-input {

@@ -1,5 +1,5 @@
 import './goToTopLink.css';
-import { handleClick } from './script/goToTopLink';
+import { handleClick } from './script/goToTopLink.js';
 
 interface GoToTopLinkProps {
     src: string;

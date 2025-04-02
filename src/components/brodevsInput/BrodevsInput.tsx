@@ -30,7 +30,7 @@ export default function BrodevsInput({
     label,
     name = '',
     type = 'text',
-    value = '',
+    value,
 }: BrodevsInputProps) {
     const [isFocused, setIsFocused] = useState(false);
     const [hasValue, setHasValue] = useState(false);

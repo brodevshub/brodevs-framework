@@ -17,6 +17,7 @@ type SpecialOptionType = {
 };
 
 type BrodevsSelectProps<T = any> = {
+    autoFocus?: boolean;
     className?: string;
     disabled?: boolean;
     error?: string;
@@ -29,19 +30,20 @@ type BrodevsSelectProps<T = any> = {
     placeholder?: string;
     searchable?: boolean;
     specialOptions?: SpecialOptionType[];
-    value: T;
+    value?: T;
 };
 
 export default function BrodevsSelect<T = any>({
+    autoFocus = false,
     className = "",
     disabled = false,
     error = '',
     handleChange,
-    icon,
+    icon = null,
     id = '',
-    name,
     label,
-    options,
+    name = '',
+    options = [],
     placeholder = "Selecciona una opción",
     searchable = false,
     specialOptions = [],
@@ -123,7 +125,6 @@ export default function BrodevsSelect<T = any>({
                 </li>
             ));
 
-
     return (
         <div
             id={`brodevs-select--${id}`}
@@ -142,25 +143,26 @@ export default function BrodevsSelect<T = any>({
 
             <div className='brodevs-select__current-option'>
                 <input
-                    name={name}
+                    autoComplete="off"
+                    autoFocus={autoFocus}
                     className={clsx(
                         "brodevs-select__current-option-label",
                         { "brodevs-select__current-option-label--searchable": searchable },
                         "brodevs-text",
                     )}
+                    name={name}
                     onBlur={handleBlur}
+                    onChange={searchable ? (e) => setSearchTerm(e.target.value) : undefined}
                     onFocus={handleFocus}
+                    placeholder={placeholder}
+                    readOnly={!searchable}
                     type="text"
                     value={(searchable && isOpen || searchable && isAnimating) ? searchTerm : currentOption?.label || placeholder}
-                    placeholder={placeholder}
-                    onChange={searchable ? (e) => setSearchTerm(e.target.value) : undefined}
-                    autoComplete="off"
-                    readOnly={!searchable}
                 />
 
                 <BrodevsIcon
                     name={icon ?? (isOpen ? 'chevronUp' : 'chevronDown')}
-                    className="brodevs-input__icon"
+                    className="brodevs-select__icon"
                     onClick={handleFocus}
                 />
             </div>

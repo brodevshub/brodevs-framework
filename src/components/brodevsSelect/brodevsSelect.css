@@ -7,6 +7,8 @@
     width: 100%;
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: var(--brodevs-select-static-color);
+    fill: var(--brodevs-select-static-color);
 }
 
 .brodevs-select-label {
@@ -22,7 +24,7 @@
     pointer-events: none;
     padding: 2px 8px;
     z-index: 1003;
-    transition: all 0.3s;
+    transition: all 0.5s;
 }
 
 .brodevs-select__current-option {
@@ -30,8 +32,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--brodevs-select-static-color);
-    fill: var(--brodevs-select-static-color);
+    color: inherit;
     background-color: var(--brodevs-select-bg-color);
     border: 1px solid;
     border-radius: 4px;
@@ -54,6 +55,13 @@
 
 .brodevs-select__current-option-label--searchable {
     cursor: text;
+}
+
+.brodevs-select__icon {
+    fill: inherit;
+    min-width: 25px;
+    margin-right: 10px;
+    height: 25px;
 }
 
 .brodevs-select__menu {
@@ -106,6 +114,7 @@
     padding: 12px;
     transition: all 0.5s;
     cursor: pointer;
+    color: var(--brodevs-select-static-color);
 }
 
 .brodevs-select__option:hover,
@@ -119,10 +128,10 @@
     z-index: 10000;
 }
 
-.brodevs-select--focused .brodevs-select,
+.brodevs-select--focused .brodevs-select__current-option,
 .brodevs-select--focused .brodevs-select-label {
-    color: var(--brodevs-input-focused-color);
-    fill: var(--brodevs-input-focused-color);
+    color: var(--brodevs-select-focused-color);
+    fill: var(--brodevs-select-focused-color);
     box-shadow: 0 0 5px;
 }
 
@@ -134,7 +143,7 @@
 
 .brodevs-select--disabled .brodevs-select__current-option,
 .brodevs-select--disabled .brodevs-select-label {
-    color: var(--brodevs-input-disabled-color);
-    fill: var(--brodevs-input-disabled-color);
+    color: var(--brodevs-select-disabled-color);
+    fill: var(--brodevs-select-disabled-color);
     pointer-events: none;
 }

@@ -262,7 +262,6 @@ export default function BrodevsForm({ element }: BrodevsFormProps) {
             <button className={`${CLASSNAME}__submit-btn`}>
                 <BrodevsIcon name="send" className={`${CLASSNAME}__submit-btn-icon`} /> Send
             </button>
-
         </form>
     );
 }

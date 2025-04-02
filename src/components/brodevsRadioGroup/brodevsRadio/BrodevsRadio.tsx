@@ -23,7 +23,7 @@ export default function BrodevsRadio({
     id = '',
     label = 'Opción',
     name = '',
-    value = ''
+    value
 }: BrodevsRadioProps) {
     return (
         <div

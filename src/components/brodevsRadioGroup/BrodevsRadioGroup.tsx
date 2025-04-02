@@ -17,7 +17,7 @@ interface BrodevsRadioGroupProps {
     label?: string;
     name: string;
     options: RadioOption[];
-    value: string;
+    value?: string;
 }
 
 export default function BrodevsRadioGroup({
@@ -27,8 +27,8 @@ export default function BrodevsRadioGroup({
     handleChange,
     id = '',
     label,
-    name,
-    options,
+    name = '',
+    options = [],
     value,
 }: BrodevsRadioGroupProps) {
     return (

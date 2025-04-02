@@ -1,22 +1,15 @@
 .brodevs-image {
-    --brodevs-input-static-color: white;
-    --brodevs-input-disabled-color: gray;
+    --brodevs-image-static-color: white;
+    --brodevs-image-disabled-color: gray;
     width: 300px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    outline: 2px solid var(--brodevs-input-static-color);
+    outline: 2px solid var(--brodevs-image-static-color);
+    fill: var(--brodevs-image-static-color);
     transition: all 0.5s;
-}
-
-.brodevs-image--disabled {
-    outline-color: var(--brodevs-input-disabled-color);
-}
-
-.brodevs-image--error {
-    outline-color: var(--light-red);
 }
 
 .brodevs-image::after {
@@ -70,19 +63,11 @@
     position: absolute;
     inset: 0;
     margin: auto;
-    fill: var(--brodevs-input-static-color);
+    fill: inherit;
     cursor: pointer;
     transition: all 0.5s;
     animation: fade-in 0.5s linear;
     z-index: 102;
-}
-
-.brodevs-image--error .brodevs-image__icon {
-    fill: var(--light-red);
-}
-
-.brodevs-image__label:hover ~ .brodevs-image__icon {
-    transform: scale(1.1);
 }
 
 .brodevs-image__tooltip {
@@ -90,24 +75,15 @@
     z-index: 10000;
 }
 
-/* MANDATORY
-    .custom-class {
-        width: ;
-        aspect-ratio: ;
-    } 
-*/
+.brodevs-image--disabled {
+    outline-color: var(--brodevs-image-disabled-color);
+}
 
-/* OPTIONAL
-    .custom-class::after  {
-        background-color: ;
-    }
+.brodevs-image--error {
+    outline-color: var(--light-red);
+    fill: var(--light-red);
+}
 
-    .custom-class .brodevs-image__icon {
-        width: ;
-        fill: ;
-    } 
-
-    .custom-class .brodevs-image__icon:hover {
-        transform: none;
-    }
-*/
+.brodevs-image__label:hover ~ .brodevs-image__icon {
+    transform: scale(1.1);
+}
