@@ -15,7 +15,7 @@ interface BrodevsImageProps {
     name?: string;
     loaderColor?: string;
     loaderSize?: number;
-    onClick?: () => void;
+    onClick?: (...args: any[]) => void;
     src?: string | null;
 }
 

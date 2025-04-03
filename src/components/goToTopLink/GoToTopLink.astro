@@ -33,7 +33,13 @@ const { src, alt, width } = Astro.props as GoToTopLinkProps;
 </style>
 
 <script type="module">
-    import { handleClick } from "./script/goToTopLink";
+    const handleClick = (event) => {
+        event.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
 
     document.addEventListener("DOMContentLoaded", () => {
         const a = document.querySelector("#go_to_top_link");

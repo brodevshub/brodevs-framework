@@ -1,20 +1,26 @@
+import BrodevsImage from '../brodevsImage/BrodevsImage';
 import './goToTopLink.css';
-import { handleClick } from './script/goToTopLink.js';
 
 interface GoToTopLinkProps {
     src: string;
     alt: string;
-    width: string;
 }
 
-const GoToTopLink: React.FC<GoToTopLinkProps> = ({ src, alt, width = '250px' }) => {
+const GoToTopLink: React.FC<GoToTopLinkProps> = ({ src, alt }) => {
+    const handleClick = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
+
     return (
-        <img
-            onClick={handleClick}
-            className="go-to-top-link"
-            src={src}
+        <BrodevsImage
             alt={alt}
-            style={{ width }}
+            className="go-to-top-link"
+            disabled
+            onClick={handleClick}
+            src={src}
         />
     );
 }
