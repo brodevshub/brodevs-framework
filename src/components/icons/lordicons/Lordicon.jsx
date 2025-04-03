@@ -1,12 +1,6 @@
 import { lordicons } from "./lordicons.ts";
 
-interface LordIconProps extends React.HTMLAttributes<HTMLElement> {
-    name: keyof typeof lordicons;
-    className?: string;
-    trigger?: string;
-}
-
-export const LordIcon: React.FC<LordIconProps> = ({ name, className = '', trigger = "loop-on-hover", ...props }) => {
+export const LordIcon = ({ name, className = '', trigger = "loop-on-hover", ...props }) => {
     const IconSVG = lordicons[name];
 
     if (!IconSVG) {
@@ -21,6 +15,5 @@ export const LordIcon: React.FC<LordIconProps> = ({ name, className = '', trigge
             class={className + ' current-color'}
             trigger={trigger}
         />
-    )
-
-}
+    );
+};
