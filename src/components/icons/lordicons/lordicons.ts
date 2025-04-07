@@ -1,6 +1,7 @@
 export const lordicons: Record<string, string> = {
     addCard: "https://cdn.lordicon.com/hqymfzvj.json",
     arroba: "https://cdn.lordicon.com/nzixoeyk.json",
+    article: "https://cdn.lordicon.com/lyrrgrsl.json",
     bin: "https://cdn.lordicon.com/skkahier.json",
     chat: "https://cdn.lordicon.com/fdxqrdfe.json",
     check: "https://cdn.lordicon.com/oqdmuxru.json",
@@ -8,7 +9,9 @@ export const lordicons: Record<string, string> = {
     events: "https://cdn.lordicon.com/abfverha.json",
     exit: "https://cdn.lordicon.com/gwvmctbb.json",
     help: "https://cdn.lordicon.com/axteoudt.json",
+    home: "https://cdn.lordicon.com/cnpvyndp.json",
     inbox: "https://cdn.lordicon.com/xtnsvhie.json",
+    notificationBell: "https://cdn.lordicon.com/vspbqszr.json",
     plusCircle: "https://cdn.lordicon.com/sbnjyzil.json",
     refresh: "https://cdn.lordicon.com/rsbokaso.json",
     results: "https://cdn.lordicon.com/zrtfxghu.json",
@@ -16,5 +19,5 @@ export const lordicons: Record<string, string> = {
     settings: "https://cdn.lordicon.com/lecprnjb.json",
     share: "https://cdn.lordicon.com/ercyvufy.json",
     user: "https://cdn.lordicon.com/kthelypq.json",
-    home: 'https://cdn.lordicon.com/cnpvyndp.json'
+    wallet: "https://cdn.lordicon.com/ciawvzjk.json"
 };
