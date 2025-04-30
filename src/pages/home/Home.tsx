@@ -1,12 +1,14 @@
 import BrodevsCounter from '@components/brodevsCounter/BrodevsCounter.tsx'
 import BrodevsImage from '@components/brodevsImage/BrodevsImage.tsx'
 import BrodevsInput from "@components/brodevsInput/BrodevsInput.tsx"
+import BrodevsTable from '@components/brodevsTable/BrodevsTable.tsx'
 import GoToTopLink from '@components/goToTopLink/GoToTopLink.tsx'
 import MainPhoto from '@components/mainPhoto/MainPhoto.tsx'
 import BrodevsCheckbox from '../../components/brodevsCheckbox/BrodevsCheckbox'
 import BrodevsForm from '../../components/brodevsForm/BrodevsForm'
 import BrodevsRadioGroup from '../../components/brodevsRadioGroup/BrodevsRadioGroup'
 import BrodevsSelect from '../../components/brodevsSelect/BrodevsSelect'
+import { headers, rows } from '../../components/brodevsTable/brodevsTableExample'
 import './home.css'
 
 export default function Home() {
@@ -178,6 +180,18 @@ export default function Home() {
                 </h2>
 
                 <span className='home-counter'>+ <BrodevsCounter number={1000} duration={1000} /> views</span>
+            </section>
+
+            <section className='home__section'>
+                <h2 className='home__title'>
+                    <pre>
+                        <code>
+                            &lt;BrodevsTable/&gt;
+                        </code>
+                    </pre>
+                </h2>
+
+                <BrodevsTable headers={headers} rows={rows} />
             </section>
 
             <section className='home__section'>

@@ -1,4 +1,6 @@
-html, body, #root {
+html,
+body,
+#root {
     background-color: black;
     font-family: 'SF';
     height: 100%;
@@ -61,7 +63,7 @@ html, body, #root {
     gap: 25px;
 }
 
-.brodevs-images-container img{
+.brodevs-images-container img {
     object-fit: contain;
 }
 
@@ -87,4 +89,10 @@ html, body, #root {
     aspect-ratio: 1/1;
     border-radius: 50%;
     --brodevs-image-static-color: rgb(95, 95, 224);
+}
+
+.brodevs-table {
+    width: 500px !important;
+    color: black;
+    background-color: white;
 }

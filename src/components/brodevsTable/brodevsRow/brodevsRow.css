@@ -1,0 +1,7 @@
+.brodevs-table__row--clickable {
+    cursor: pointer;
+}
+
+.brodevs-table__row--clickable:hover {
+    background-color: #f5f5f5;
+}

@@ -1,0 +1,31 @@
+.brodevs-table__header-cell {
+    background-color: #f0f0f0;
+}
+
+.brodevs-table__header-cell-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.brodevs-table__header-cell--clickable {
+    cursor: pointer;
+}
+
+.brodevs-table__sort-icon {
+    transition: opacity 0.2s ease;
+    opacity: 1;
+}
+
+.brodevs-table__sort-icon--hidden {
+    opacity: 0;
+}
+
+.brodevs-table__header-cell--clickable:hover .brodevs-table__sort-icon--hidden {
+    opacity: 0.3;
+}
+
+.brodevs-table__sort-icon--visible {
+    opacity: 1;
+}

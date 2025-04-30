@@ -1,0 +1,12 @@
+.brodevs-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.brodevs-table__header-cell,
+.brodevs-table__cell {
+    text-align: center;
+    padding: 4px;
+    border: 1px solid #ccc;
+}
